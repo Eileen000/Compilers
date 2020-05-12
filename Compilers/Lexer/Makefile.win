@@ -1,0 +1,43 @@
+# Project: Lexer
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o File.o NFA.o DFA.o Create.o Identify.o
+LINKOBJ  = main.o File.o NFA.o DFA.o Create.o Identify.o
+LIBS     = -L"E:/Dev-Cpp/MinGW64/lib" -L"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"E:/Dev-Cpp/eigen-eigen-323c052e1731"
+BIN      = Lexer.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+File.o: File.cpp
+	$(CPP) -c File.cpp -o File.o $(CXXFLAGS)
+
+NFA.o: NFA.cpp
+	$(CPP) -c NFA.cpp -o NFA.o $(CXXFLAGS)
+
+DFA.o: DFA.cpp
+	$(CPP) -c DFA.cpp -o DFA.o $(CXXFLAGS)
+
+Create.o: Create.cpp
+	$(CPP) -c Create.cpp -o Create.o $(CXXFLAGS)
+
+Identify.o: Identify.cpp
+	$(CPP) -c Identify.cpp -o Identify.o $(CXXFLAGS)

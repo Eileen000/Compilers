@@ -1,0 +1,43 @@
+# Project: Parser
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o In.o Item.o Production.o Analysis.o File.o
+LINKOBJ  = main.o In.o Item.o Production.o Analysis.o File.o
+LIBS     = -L"E:/Dev-Cpp/MinGW64/lib" -L"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"E:/Dev-Cpp/eigen-eigen-323c052e1731"
+BIN      = Parser.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+In.o: In.cpp
+	$(CPP) -c In.cpp -o In.o $(CXXFLAGS)
+
+Item.o: Item.cpp
+	$(CPP) -c Item.cpp -o Item.o $(CXXFLAGS)
+
+Production.o: Production.cpp
+	$(CPP) -c Production.cpp -o Production.o $(CXXFLAGS)
+
+Analysis.o: Analysis.cpp
+	$(CPP) -c Analysis.cpp -o Analysis.o $(CXXFLAGS)
+
+File.o: File.cpp
+	$(CPP) -c File.cpp -o File.o $(CXXFLAGS)
